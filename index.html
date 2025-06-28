@@ -1,745 +1,350 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TopMaster - Профессиональные услуги для дома и бизнеса</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: #ffffff;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #e1e8ed;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1a73e8;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .nav-links a:hover {
-            color: #1a73e8;
-        }
-        
-        .cta-button {
-            background: #1a73e8;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            background: #1557b0;
-            transform: translateY(-1px);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 120px 0 80px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            color: #5f6c7b;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .search-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: 0 auto;
-            border: 1px solid #e1e8ed;
-        }
-        
-        .search-form {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-end;
-        }
-        
-        .form-group {
-            flex: 1;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 0.9rem;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 0.9rem;
-            border: 2px solid #e1e8ed;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #1a73e8;
-        }
-        
-        .search-button {
-            background: #1a73e8;
-            color: white;
-            padding: 0.9rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        
-        .search-button:hover {
-            background: #1557b0;
-        }
-        
-        /* Main Content */
-        .main-content {
-            padding: 4rem 0;
-        }
-        
-        /* Services Section */
-        .services-section {
-            padding: 4rem 0;
-            background: #ffffff;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: #5f6c7b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid #e1e8ed;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .service-card:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
-            border-color: #1a73e8;
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-        
-        .service-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
-        .service-card p {
-            color: #5f6c7b;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-price {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a73e8;
-        }
-        
-        /* How it Works */
-        .how-it-works {
-            background: #f8f9fa;
-            padding: 4rem 0;
-        }
-        
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .step {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #e1e8ed;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: #1a73e8;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1.5rem;
-        }
-        
-        .step h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
-        .step p {
-            color: #5f6c7b;
-            line-height: 1.6;
-        }
-        
-        /* Guarantee Section */
-        .guarantee-section {
-            background: #1a73e8;
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .guarantee-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .guarantee-item {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .guarantee-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .guarantee-item h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .guarantee-item p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        /* Registration Section */
-        .registration-section {
-            background: #ffffff;
-            padding: 4rem 0;
-        }
-        
-        .registration-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .registration-text h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-        }
-        
-        .registration-text p {
-            font-size: 1.1rem;
-            color: #5f6c7b;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        
-        .benefits-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .benefits-list li {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
-        .benefits-list li::before {
-            content: "✓";
-            background: #28a745;
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-        }
-        
-        .registration-form {
-            background: #f8f9fa;
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid #e1e8ed;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 0.9rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.9rem;
-            border: 2px solid #e1e8ed;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: #1a73e8;
-        }
-        
-        .specialties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .specialty-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .specialty-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #1a73e8;
-        }
-        
-        .submit-button {
-            background: #1a73e8;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        
-        .submit-button:hover {
-            background: #1557b0;
-        }
-        
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-section ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .footer-section ul li a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #34495e;
-            color: #bdc3c7;
-            font-size: 0.9rem;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-        }
-        
-        .close {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            color: #aaa;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: #2c3e50;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .search-form {
-                flex-direction: column;
-            }
-            
-            .registration-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .specialties-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .steps {
-                grid-template-columns: 1fr;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Tab functionality */
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .service-card {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; }
-        .service-card:nth-child(6) { animation-delay: 0.6s; }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <a href="#" class="logo" onclick="showSection('home')">TopMaster</a>
-            <ul class="nav-links">
-                <li><a onclick="showSection('home')">Главная</a></li>
-                <li><a onclick="showSection('services')">Услуги</a></li>
-                <li><a onclick="showSection('about')">О нас</a></li>
-                <li><a onclick="showSection('contact')">Контакты</a></li>
-            </ul>
-            <a onclick="showSection('register')" class="cta-button">Стать исполнителем</a>
-        </nav>
-    </header>
-
-    <!-- Home Section -->
-    <section id="home" class="tab-content active">
-        <!-- Hero -->
-        <div class="hero">
-            <div class="container">
-                <h1>Профессиональные услуги для дома и бизнеса</h1>
-                <p>Найдите проверенных специалистов для любых задач. Быстро, надежно, с гарантией качества.</p>
-                
-                <div class="search-container">
-                    <form class="search-form" onsubmit="handleSearch(event)">
-                        <div class="form-group">
-                            <label for="service">Какая услуга нужна?</label>
-                            <select id="service" class="form-input" required>
-                                <option value="">Выберите услугу</option>
-                                <option value="plumbing">Сантехнические работы</option>
-                                <option value="electrical">Электромонтажные работы</option>
-                                <option value="repair">Ремонт и отделка</option>
-                                <option value="cleaning">Клининговые услуги</option>
-                                <option value="furniture">Сборка мебели</option>
-                                <option value="appliance">Ремонт техники</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="location">Ваш город</label>
-                            <input type="text" id="location" class="form-input" placeholder="Москва" required>
-                        </div>
-                        <button type="submit" class="search-button">Найти специалиста</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Services Section -->
-        <div class="services-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Популярные услуги</h2>
-                    <p class="section-subtitle">Широкий спектр профессиональных услуг для решения любых задач</p>
-                </div>
-                
-                <div class="services-grid">
-                    <div class="service-card" onclick="selectService('plumbing')">
-                        <span class="service-icon">🔧</span>
-                        <h3>Сантехнические работы</h3>
-                        <p>Установка и ремонт сантехники, замена труб, устранение протечек</p>
-                        <div class="service-price">от 800 ₽</div>
-                    </div>
+</div>
                     
                     <div class="service-card" onclick="selectService('electrical')">
                         <span class="service-icon">⚡</span>
                         <h3>Электромонтажные работы</h3>
-                        <p>Монтаж проводки, установка розеток, подключение техники</p>
-                        <div class="service-price">от 1200 ₽</div>
+                        <p>Замена электропроводки, установка розеток и выключателей. Монтаж освещения, подключение бытовой техники. Установка электрощитов и автоматов защиты.</p>
                     </div>
                     
                     <div class="service-card" onclick="selectService('repair')">
                         <span class="service-icon">🏠</span>
                         <h3>Ремонт и отделка</h3>
-                        <p>Косметический и капитальный ремонт, покраска, поклейка обоев</p>
-                        <div class="service-price">от 500 ₽/м²</div>
+                        <p>Покраска стен и потолков, поклейка обоев, укладка ламината и плитки. Шпаклевка, грунтовка, декоративная отделка. Установка плинтусов и наличников.</p>
                     </div>
                     
                     <div class="service-card" onclick="selectService('cleaning')">
                         <span class="service-icon">🧹</span>
                         <h3>Клининговые услуги</h3>
-                        <p>Генеральная уборка, мытье окон, химчистка мебели</p>
-                        <div class="service-price">от 1500 ₽</div>
+                        <p>Генеральная уборка квартир и офисов, мытье окон, химчистка мебели и ковров. Уборка после ремонта, поддерживающая уборка. Дезинфекция помещений.</p>
                     </div>
                     
                     <div class="service-card" onclick="selectService('furniture')">
                         <span class="service-icon">🪑</span>
                         <h3>Сборка мебели</h3>
-                        <p>Сборка и установка мебели любой сложности</p>
-                        <div class="service-price">от 2000 ₽</div>
+                        <p>Сборка кухонных гарнитуров, шкафов-купе, комодов и столов. Установка встроенной мебели, навешивание полок. Ремонт и реставрация мебели.</p>
                     </div>
                     
                     <div class="service-card" onclick="selectService('appliance')">
                         <span class="service-icon">🔨</span>
                         <h3>Ремонт техники</h3>
-                        <p>Ремонт бытовой техники, диагностика, запчасти</p>
+                        <p>Диагностика и ремонт стиральных машин, холодильников, посудомоечных машин. Ремонт компьютеров и ноутбуков. Обслуживание кондиционеров и котлов.</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">🚗</span>
-                        <h3>Автомобильные услуги</h3>
-                        <p>• Диагностика автомобиля<br>• Замена масла и фильтров<br>• Ремонт двигателя<br>• Кузовные работы</p>
-                        <div class="service-price">от 2500 ₽</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How it Works -->
+        <div class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Как это работает</h2>
+                    <p class="section-subtitle">Простой процесс получения качественных услуг</p>
+                </div>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Опишите задачу</h3>
+                        <p>Расскажите, что нужно сделать, укажите удобное время и место</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">🌿</span>
-                        <h3>Садовые работы</h3>
-                        <p>• Уход за газоном<br>• Обрезка деревьев<br>• Ландшафтный дизайн<br>• Система полива</p>
-                        <div class="service-price">от 1800 ₽</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Получите предложения</h3>
+                        <p>Проверенные специалисты свяжутся с вами и предложат свои услуги</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">📦</span>
-                        <h3>Грузоперевозки</h3>
-                        <p>• Квартирные переезды<br>• Доставка мебели<br>• Грузчики<br>• Утилизация</p>
-                        <div class="service-price">от 3000 ₽</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Выберите исполнителя</h3>
+                        <p>Сравните предложения, изучите отзывы и выберите подходящего специалиста</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Получите результат</h3>
+                        <p>Работы выполняются качественно и в срок с гарантией</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guarantee Section -->
+        <div class="guarantee-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" style="color: white;">Наши гарантии</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Мы обеспечиваем безопасность и качество каждой сделки</p>
+                </div>
+                
+                <div class="guarantee-grid">
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">🛡️</span>
+                        <h3>Проверенные специалисты</h3>
+                        <p>Все исполнители проходят тщательную проверку документов и квалификации</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">💰</span>
+                        <h3>Безопасные платежи</h3>
+                        <p>Оплата через безопасную систему, деньги передаются после выполнения работ</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">📋</span>
+                        <h3>Гарантия качества</h3>
+                        <p>На все работы предоставляется гарантия, страхование ответственности</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">⏰</span>
+                        <h3>Соблюдение сроков</h3>
+                        <p>Работы выполняются в оговоренные сроки или мы компенсируем задержку</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Services Section -->
+    <section id="services" class="tab-content">
+        <div class="main-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Все услуги</h2>
+                    <p class="section-subtitle">Полный каталог профессиональных услуг с детальными описаниями</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">🔧</span>
+                        <h3>Сантехнические работы</h3>
+                        <p>Установка и замена смесителей, раковин, унитазов, ванн. Прокладка и замена водопроводных труб. Устранение протечек, засоров. Подключение стиральных и посудомоечных машин. Монтаж систем водоснабжения и канализации.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">⚡</span>
+                        <h3>Электромонтажные работы</h3>
+                        <p>Замена электропроводки, установка розеток и выключателей. Монтаж освещения, люстр, светильников. Подключение бытовой техники, кондиционеров. Установка электрощитов, автоматов защиты. Заземление и молниезащита.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🏠</span>
+                        <h3>Ремонт и отделка</h3>
+                        <p>Покраска стен и потолков, поклейка обоев, декоративная штукатурка. Укладка ламината, паркета, плитки. Установка гипсокартонных конструкций. Шпаклевка, грунтовка, финишная отделка. Монтаж плинтусов и наличников.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🧹</span>
+                        <h3>Клининговые услуги</h3>
+                        <p>Генеральная уборка квартир, домов, офисов. Мытье окон, фасадов. Химчистка мебели, ковров, матрасов. Уборка после ремонта, строительства. Поддерживающая уборка. Дезинфекция и санитарная обработка помещений.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🪑</span>
+                        <h3>Сборка мебели</h3>
+                        <p>Сборка кухонных гарнитуров, шкафов-купе, комодов, столов, стульев. Установка встроенной мебели, гардеробных систем. Навешивание полок, зеркал. Ремонт и реставрация мебели. Перетяжка мягкой мебели.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🔨</span>
+                        <h3>Ремонт техники</h3>
+                        <p>Диагностика и ремонт стиральных машин, холодильников, посудомоечных машин, духовых шкафов. Ремонт компьютеров, ноутбуков, телефонов. Обслуживание кондиционеров, котлов отопления. Замена запчастей, профилактика.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🚗</span>
+                        <h3>Автомобильные услуги</h3>
+                        <p>Диагностика двигателя, ходовой части, электроники. Замена масла, фильтров, тормозных колодок. Ремонт двигателя, коробки передач. Кузовные работы, покраска, полировка. Установка дополнительного оборудования.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🌿</span>
+                        <h3>Садовые работы</h3>
+                        <p>Уход за газоном, стрижка травы, аэрация. Обрезка деревьев, кустарников, живой изгороди. Ландшафтный дизайн, посадка растений. Установка систем полива, освещения. Уборка территории, вывоз мусора.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">📦</span>
+                        <h3>Грузоперевозки</h3>
+                        <p>Квартирные и офисные переезды, упаковка вещей. Доставка мебели, техники, стройматериалов. Услуги грузчиков, подъем на этажи. Вывоз старой мебели, строительного мусора. Перевозка пианино, сейфов.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat" class="tab-content">
+        <div class="main-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Сообщения</h2>
+                    <p class="section-subtitle">Общайтесь с исполнителями напрямую для обсуждения деталей заказа</p>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-sidebar">
+                        <div class="chat-search">
+                            <input type="text" placeholder="Поиск по сообщениям..." class="form-input">
+                        </div>
+                        <div class="chat-list">
+                            <div class="chat-item active" onclick="openChat('alexey')">
+                                <div class="chat-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" alt="Алексей">
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">Алексей Петров</div>
+                                    <div class="chat-service">Сантехнические работы</div>
+                                    <div class="chat-preview">Могу приехать завтра в 14:00</div>
+                                </div>
+                                <div class="chat-meta">
+                                    <div class="chat-time">15:30</div>
+                                    <div class="chat-badge">2</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-item" onclick="openChat('maria')">
+                                <div class="chat-avatar">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=50&h=50&fit=crop&crop=face" alt="Мария">
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">Мария Сидорова</div>
+                                    <div class="chat-service">Клининговые услуги</div>
+                                    <div class="chat-preview">Спасибо за заказ! Все готово</div>
+                                </div>
+                                <div class="chat-meta">
+                                    <div class="chat-time">Вчера</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-item" onclick="openChat('dmitry')">
+                                <div class="chat-avatar">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" alt="Дмитрий">
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">Дмитрий Иванов</div>
+                                    <div class="chat-service">Электромонтажные работы</div>
+                                    <div class="chat-preview">Нужно уточнить детали проекта</div>
+                                </div>
+                                <div class="chat-meta">
+                                    <div class="chat-time">2 дня</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-main">
+                        <div class="chat-header">
+                            <div class="chat-user-info">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Алексей" class="chat-user-avatar">
+                                <div>
+                                    <div class="chat-user-name">Алексей Петров</div>
+                                    <div class="chat-user-status">Сантехник • В сети</div>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="btn btn-secondary" onclick="showModal('orderDetailsModal')">Детали заказа</button>
+                                <button class="btn btn-primary" onclick="makeCall()">📞 Позвонить</button>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message-date">Сегодня</div>
+                            
+                            <div class="message incoming">
+                                <div class="message-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Алексей">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-text">Здравствуйте! Изучил ваш заказ на замену смесителя в ванной. Готов выполнить работу качественно.</div>
+                                    <div class="message-time">14:20</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message outgoing">
+                                <div class="message-content">
+                                    <div class="message-text">Здравствуйте! Отлично. Когда можете приехать?</div>
+                                    <div class="message-time">14:22</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message incoming">
+                                <div class="message-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Алексей">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-text">Могу приехать завтра в 14:00. Работа займет около часа. Смеситель у вас есть или нужно привезти?</div>
+                                    <div class="message-time">15:30</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message outgoing">
+                                <div class="message-content">
+                                    <div class="message-text">Смеситель есть. Завтра в 14:00 подходит. Какие инструменты нужны?</div>
+                                    <div class="message-time">15:35</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message incoming">
+                                <div class="message-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Алексей">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-text">Все инструменты у меня есть. Возможно понадобятся расходники - гибкие подводки, если старые износились. Покажу на месте.</div>
+                                    <div class="message-time">15:40</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input">
+                            <form class="message-form" onsubmit="sendMessage(event)">
+                                <div class="input-group">
+                                    <button type="button" class="attach-btn" onclick="attachFile()">📎</button>
+                                    <input type="text" class="message-input" placeholder="Напишите сообщение..." id="messageInput">
+                                    <button type="submit" class="send-btn">📤</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Details Modal -->
+    <div id="orderDetailsModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <span class="close" onclick="hideModal('orderDetailsModal')">&times;</span>
+            <h2 style="margin-bottom: 2rem; color: #2c3e50;">Детали заказа</h2>
+            
+            <div class="order-details">
+                <div class="detail-section">
+                    <h3>Описание работ</h3>
+                    <p>Замена смесителя в ванной комнате. Демонтаж старого смесителя, установка нового, проверка герметичности соединений, настройка температуры воды.</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>Адрес выполнения</h3>
+                    <p>📍 г. Москва, ул. Пушкина, д. 10, кв. 5</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>Время выполнения</h3>
+                    <p>🕐 Завтра, 15 июня 2025, 14:00</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>Предварительная стоимость</h3>
+                    <p>💰 Договорная (обсуждается с исполнителем)</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>Статус заказа</h3>
+                    <p>✅ Принят в работу</p>
+                </div>
+                
+                <div class="detail-section">
+                    <h3>Дополнительные требования</h3>
+                    <p>Аккуратность при работе, уборка после завершения, гарантия на выполненные работы.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Register Section -->
     <section id="register" class="tab-content">
@@ -873,10 +478,6 @@
                             <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
                                 <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
                                 Тщательная проверка всех исполнителей
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
-                                <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
-                                Прозрачная система ценообразования
                             </li>
                             <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
                                 <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
@@ -1154,6 +755,152 @@
             return serviceNames[serviceKey] || serviceKey;
         }
 
+        // Chat functionality
+        let currentChat = 'alexey';
+        
+        function openChat(chatId) {
+            currentChat = chatId;
+            
+            // Update active chat item
+            document.querySelectorAll('.chat-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Load chat messages for the selected user
+            loadChatMessages(chatId);
+        }
+        
+        function loadChatMessages(chatId) {
+            const chats = {
+                'alexey': {
+                    name: 'Алексей Петров',
+                    status: 'Сантехник • В сети',
+                    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face',
+                    messages: [
+                        { type: 'incoming', text: 'Здравствуйте! Изучил ваш заказ на замену смесителя в ванной. Готов выполнить работу качественно.', time: '14:20' },
+                        { type: 'outgoing', text: 'Здравствуйте! Отлично. Когда можете приехать?', time: '14:22' },
+                        { type: 'incoming', text: 'Могу приехать завтра в 14:00. Работа займет около часа. Смеситель у вас есть или нужно привезти?', time: '15:30' },
+                        { type: 'outgoing', text: 'Смеситель есть. Завтра в 14:00 подходит. Какие инструменты нужны?', time: '15:35' },
+                        { type: 'incoming', text: 'Все инструменты у меня есть. Возможно понадобятся расходники - гибкие подводки, если старые износились. Покажу на месте.', time: '15:40' }
+                    ]
+                },
+                'maria': {
+                    name: 'Мария Сидорова',
+                    status: 'Клининг-менеджер • Не в сети',
+                    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=40&h=40&fit=crop&crop=face',
+                    messages: [
+                        { type: 'incoming', text: 'Добрый день! Ваш заказ на генеральную уборку принят. Приеду завтра в 10:00.', time: '09:15' },
+                        { type: 'outgoing', text: 'Отлично! Нужно ли что-то подготовить?', time: '09:20' },
+                        { type: 'incoming', text: 'Лучше убрать личные вещи с поверхностей. Все средства и оборудование у меня есть.', time: '09:25' },
+                        { type: 'outgoing', text: 'Хорошо, подготовлю. До встречи!', time: '09:27' },
+                        { type: 'incoming', text: 'Спасибо за заказ! Все готово. Оставьте, пожалуйста, отзыв.', time: 'Вчера' }
+                    ]
+                },
+                'dmitry': {
+                    name: 'Дмитрий Иванов',
+                    status: 'Электрик • В сети',
+                    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face',
+                    messages: [
+                        { type: 'incoming', text: 'Здравствуйте! Посмотрел ваш заказ на замену проводки. Нужно уточнить детали.', time: '11:30' },
+                        { type: 'outgoing', text: 'Здравствуйте! Какие детали нужно уточнить?', time: '11:35' },
+                        { type: 'incoming', text: 'Сколько комнат, какая площадь квартиры? Нужна ли замена электрощита?', time: '11:40' },
+                        { type: 'outgoing', text: '3 комнаты, 65 кв.м. Щит менять не нужно, он новый.', time: '11:45' },
+                        { type: 'incoming', text: 'Понятно. Составлю смету и пришлю вам на согласование.', time: '11:50' }
+                    ]
+                }
+            };
+
+            const chat = chats[chatId];
+            if (chat) {
+                // Update chat header
+                document.querySelector('.chat-user-name').textContent = chat.name;
+                document.querySelector('.chat-user-status').textContent = chat.status;
+                document.querySelector('.chat-user-avatar').src = chat.avatar;
+                
+                // Clear and update messages
+                const messagesContainer = document.getElementById('chatMessages');
+                messagesContainer.innerHTML = '<div class="message-date">Сегодня</div>';
+                
+                chat.messages.forEach(msg => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `message ${msg.type}`;
+                    
+                    if (msg.type === 'incoming') {
+                        messageDiv.innerHTML = `
+                            <div class="message-avatar">
+                                <img src="${chat.avatar}" alt="${chat.name}">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-text">${msg.text}</div>
+                                <div class="message-time">${msg.time}</div>
+                            </div>
+                        `;
+                    } else {
+                        messageDiv.innerHTML = `
+                            <div class="message-content">
+                                <div class="message-text">${msg.text}</div>
+                                <div class="message-time">${msg.time}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    messagesContainer.appendChild(messageDiv);
+                });
+                
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('messageInput');
+            const messageText = input.value.trim();
+            
+            if (messageText) {
+                const messagesContainer = document.getElementById('chatMessages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message outgoing';
+                messageDiv.innerHTML = `
+                    <div class="message-content">
+                        <div class="message-text">${messageText}</div>
+                        <div class="message-time">${new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'})}</div>
+                    </div>
+                `;
+                
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                input.value = '';
+                
+                // Simulate response after 2 seconds
+                setTimeout(() => {
+                    const responseDiv = document.createElement('div');
+                    responseDiv.className = 'message incoming';
+                    responseDiv.innerHTML = `
+                        <div class="message-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Мастер">
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">Понял вас, уточню детали и отвечу.</div>
+                            <div class="message-time">${new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'})}</div>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(responseDiv);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 2000);
+            }
+        }
+
+        function attachFile() {
+            alert('Функция прикрепления файлов будет доступна в полной версии приложения');
+        }
+
+        function makeCall() {
+            alert('Инициирование звонка...\nВ реальном приложении здесь будет VoIP звонок или переход в телефонное приложение');
+        }
+
         // Form submissions
         function submitApplication(event) {
             event.preventDefault();
@@ -1165,10 +912,7 @@
                 return;
             }
             
-            // Show success message
             alert('🎉 Спасибо за заявку!\n\nМы рассмотрим ваше заявление в течение 24 часов и свяжемся с вами для дальнейшего сотрудничества.');
-            
-            // Reset form
             event.target.reset();
         }
 
@@ -1217,128 +961,1052 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Show home section by default
             showSection('home');
+            
+            // Load default chat
+            loadChatMessages('alexey');
         });
     </script>
 </body>
-</html>    </div>
-                </div>
-            </div>
-        </div>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMaster - Профессиональные услуги для дома и бизнеса</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            color: #1a73e8;
+        }
+        
+        .cta-button {
+            background: #1a73e8;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #1557b0;
+            transform: translateY(-1px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: #5f6c7b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+        
+        .form-group {
+            flex: 1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+        
+        .search-button {
+            background: #1a73e8;
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .search-button:hover {
+            background: #1557b0;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #5f6c7b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            border-color: #1a73e8;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .service-card p {
+            color: #5f6c7b;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        /* How it Works */
+        .how-it-works {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #1a73e8;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .step p {
+            color: #5f6c7b;
+            line-height: 1.6;
+        }
+        
+        /* Guarantee Section */
+        .guarantee-section {
+            background: #1a73e8;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .guarantee-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .guarantee-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .guarantee-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .guarantee-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Registration Section */
+        .registration-section {
+            background: #ffffff;
+            padding: 4rem 0;
+        }
+        
+        .registration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .registration-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .registration-text p {
+            font-size: 1.1rem;
+            color: #5f6c7b;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .benefits-list li::before {
+            content: "✓";
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .registration-form {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+        
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .specialty-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .specialty-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1a73e8;
+        }
+        
+        .submit-button {
+            background: #1a73e8;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            background: #1557b0;
+        }
+        
+        /* Chat Styles */
+        .chat-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            height: 600px;
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .chat-sidebar {
+            background: #f8f9fa;
+            border-right: 1px solid #e1e8ed;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-search {
+            padding: 1rem;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        
+        .chat-search input {
+            border: 1px solid #e1e8ed;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .chat-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .chat-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e1e8ed;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .chat-item:hover {
+            background: #e9ecef;
+        }
+        
+        .chat-item.active {
+            background: #e8f4fd;
+            border-right: 3px solid #1a73e8;
+        }
+        
+        .chat-avatar {
+            margin-right: 1rem;
+        }
+        
+        .chat-avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .chat-info {
+            flex: 1;
+        }
+        
+        .chat-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.2rem;
+        }
+        
+        .chat-service {
+            font-size: 0.8rem;
+            color: #1a73e8;
+            margin-bottom: 0.2rem;
+        }
+        
+        .chat-preview {
+            font-size: 0.9rem;
+            color: #5f6c7b;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .chat-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .chat-time {
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        .chat-badge {
+            background: #1a73e8;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .chat-main {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e1e8ed;
+            background: white;
+        }
+        
+        .chat-user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .chat-user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .chat-user-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .chat-user-status {
+            font-size: 0.9rem;
+            color: #28a745;
+        }
+        
+        .chat-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #1a73e8;
+            border: 2px solid #1a73e8;
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background: #fafbfc;
+        }
+        
+        .message-date {
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .message-date::before,
+        .message-date::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #e1e8ed;
+        }
+        
+        .message-date::before {
+            left: 0;
+        }
+        
+        .message-date::after {
+            right: 0;
+        }
+        
+        .message {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        
+        .message.incoming {
+            justify-content: flex-start;
+        }
+        
+        .message.outgoing {
+            justify-content: flex-end;
+        }
+        
+        .message-avatar {
+            margin-right: 0.5rem;
+        }
+        
+        .message-avatar img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .message-content {
+            max-width: 70%;
+        }
+        
+        .message-text {
+            background: white;
+            padding: 0.8rem 1rem;
+            border-radius: 18px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+        }
+        
+        .message.outgoing .message-text {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .message-time {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 0.3rem;
+            text-align: right;
+        }
+        
+        .message.incoming .message-time {
+            text-align: left;
+        }
+        
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid #e1e8ed;
+            background: white;
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 25px;
+            padding: 0.5rem;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .attach-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .attach-btn:hover {
+            background: #e9ecef;
+        }
+        
+        .message-input {
+            flex: 1;
+            border: none;
+            background: none;
+            padding: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .send-btn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .send-btn:hover {
+            background: #1557b0;
+        }
+        
+        /* Order Details Modal */
+        .order-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .detail-section h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .detail-section p {
+            color: #5f6c7b;
+            line-height: 1.6;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            color: #aaa;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #2c3e50;
+        }
+        
+        /* Tab functionality */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+            
+            .registration-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .specialties-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chat-container {
+                grid-template-columns: 1fr;
+                height: 500px;
+            }
+            
+            .chat-sidebar {
+                display: none;
+            }
+            
+            .chat-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .message-content {
+                max-width: 85%;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo" onclick="showSection('home')">TopMaster</a>
+            <ul class="nav-links">
+                <li><a onclick="showSection('home')">Главная</a></li>
+                <li><a onclick="showSection('services')">Услуги</a></li>
+                <li><a onclick="showSection('chat')">Сообщения</a></li>
+                <li><a onclick="showSection('about')">О нас</a></li>
+                <li><a onclick="showSection('contact')">Контакты</a></li>
+            </ul>
+            <a onclick="showSection('register')" class="cta-button">Стать исполнителем</a>
+        </nav>
+    </header>
 
-        <!-- How it Works -->
-        <div class="how-it-works">
+    <!-- Home Section -->
+    <section id="home" class="tab-content active">
+        <!-- Hero -->
+        <div class="hero">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Как это работает</h2>
-                    <p class="section-subtitle">Простой процесс получения качественных услуг</p>
-                </div>
+                <h1>Профессиональные услуги для дома и бизнеса</h1>
+                <p>Найдите проверенных специалистов для любых задач. Быстро, надежно, с гарантией качества.</p>
                 
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Опишите задачу</h3>
-                        <p>Расскажите, что нужно сделать, укажите удобное время и место</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Получите предложения</h3>
-                        <p>Проверенные специалисты свяжутся с вами и предложат свои услуги</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Выберите исполнителя</h3>
-                        <p>Сравните предложения, изучите отзывы и выберите подходящего специалиста</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Получите результат</h3>
-                        <p>Работы выполняются качественно и в срок с гарантией</p>
-                    </div>
+                <div class="search-container">
+                    <form class="search-form" onsubmit="handleSearch(event)">
+                        <div class="form-group">
+                            <label for="service">Какая услуга нужна?</label>
+                            <select id="service" class="form-input" required>
+                                <option value="">Выберите услугу</option>
+                                <option value="plumbing">Сантехнические работы</option>
+                                <option value="electrical">Электромонтажные работы</option>
+                                <option value="repair">Ремонт и отделка</option>
+                                <option value="cleaning">Клининговые услуги</option>
+                                <option value="furniture">Сборка мебели</option>
+                                <option value="appliance">Ремонт техники</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Ваш город</label>
+                            <input type="text" id="location" class="form-input" placeholder="Москва" required>
+                        </div>
+                        <button type="submit" class="search-button">Найти специалиста</button>
+                    </form>
                 </div>
             </div>
         </div>
 
-        <!-- Guarantee Section -->
-        <div class="guarantee-section">
+        <!-- Services Section -->
+        <div class="services-section">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title" style="color: white;">Наши гарантии</h2>
-                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Мы обеспечиваем безопасность и качество каждой сделки</p>
-                </div>
-                
-                <div class="guarantee-grid">
-                    <div class="guarantee-item">
-                        <span class="guarantee-icon">🛡️</span>
-                        <h3>Проверенные специалисты</h3>
-                        <p>Все исполнители проходят тщательную проверку документов и квалификации</p>
-                    </div>
-                    <div class="guarantee-item">
-                        <span class="guarantee-icon">💰</span>
-                        <h3>Безопасные платежи</h3>
-                        <p>Оплата через безопасную систему, деньги передаются после выполнения работ</p>
-                    </div>
-                    <div class="guarantee-item">
-                        <span class="guarantee-icon">📋</span>
-                        <h3>Гарантия качества</h3>
-                        <p>На все работы предоставляется гарантия, страхование ответственности</p>
-                    </div>
-                    <div class="guarantee-item">
-                        <span class="guarantee-icon">⏰</span>
-                        <h3>Соблюдение сроков</h3>
-                        <p>Работы выполняются в оговоренные сроки или мы компенсируем задержку</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="tab-content">
-        <div class="main-content">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Все услуги</h2>
-                    <p class="section-subtitle">Полный каталог профессиональных услуг с фиксированными ценами</p>
+                    <h2 class="section-title">Популярные услуги</h2>
+                    <p class="section-subtitle">Широкий спектр профессиональных услуг для решения любых задач</p>
                 </div>
                 
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card" onclick="selectService('plumbing')">
                         <span class="service-icon">🔧</span>
                         <h3>Сантехнические работы</h3>
-                        <p>• Установка смесителей и раковин<br>• Замена труб и фитингов<br>• Устранение засоров<br>• Ремонт унитазов и ванн</p>
-                        <div class="service-price">от 800 ₽</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">⚡</span>
-                        <h3>Электромонтажные работы</h3>
-                        <p>• Замена проводки<br>• Установка розеток и выключателей<br>• Монтаж освещения<br>• Подключение бытовой техники</p>
-                        <div class="service-price">от 1200 ₽</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">🏠</span>
-                        <h3>Ремонт и отделка</h3>
-                        <p>• Покраска стен и потолков<br>• Поклейка обоев<br>• Укладка плитки<br>• Установка напольных покрытий</p>
-                        <div class="service-price">от 500 ₽/м²</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">🧹</span>
-                        <h3>Клининговые услуги</h3>
-                        <p>• Генеральная уборка<br>• Мытье окон<br>• Химчистка мебели и ковров<br>• Уборка после ремонта</p>
-                        <div class="service-price">от 1500 ₽</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">🪑</span>
-                        <h3>Сборка мебели</h3>
-                        <p>• Кухонные гарнитуры<br>• Шкафы и комоды<br>• Офисная мебель<br>• Встроенные конструкции</p>
-                        <div class="service-price">от 2000 ₽</div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <span class="service-icon">🔨</span>
-                        <h3>Ремонт техники</h3>
-                        <p>• Стиральные машины<br>• Холодильники<br>• Компьютеры и ноутбуки<br>• Мелкая бытовая техника</p>
-                        <div class="service-price">от 1000 ₽</div>
+                        <p>Установка и замена смесителей, раковин, унитазов. Прокладка водопроводных труб, устранение протечек и засоров. Подключение стиральных и посудомоечных машин.</p>
