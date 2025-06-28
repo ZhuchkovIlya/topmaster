@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TopMaster - Найди лучшего мастера</title>
+    <title>TopMaster - Профессиональные услуги для дома и бизнеса</title>
     <style>
         * {
             margin: 0;
@@ -12,11 +12,10 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: #2c3e50;
+            background: #ffffff;
         }
         
         .container {
@@ -27,413 +26,491 @@
         
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid #e1e8ed;
         }
         
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
         
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            cursor: pointer;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a73e8;
+            text-decoration: none;
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #2c3e50;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
             cursor: pointer;
         }
         
         .nav-links a:hover {
-            color: #667eea;
+            color: #1a73e8;
         }
         
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .btn {
-            padding: 0.7rem 1.5rem;
+        .cta-button {
+            background: #1a73e8;
+            color: white;
+            padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
+            display: inline-block;
         }
         
-        .btn-primary {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        .cta-button:hover {
+            background: #1557b0;
+            transform: translateY(-1px);
         }
         
         /* Hero Section */
         .hero {
-            margin-top: 80px;
-            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 120px 0 80px;
             text-align: center;
-            color: white;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            line-height: 1.2;
         }
         
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            color: #5f6c7b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .search-box {
+        .search-container {
             background: white;
             padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
             margin: 0 auto;
+            border: 1px solid #e1e8ed;
         }
         
         .search-form {
             display: flex;
             gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .search-input {
-            flex: 1;
-            min-width: 200px;
-            padding: 1rem;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-        
-        .search-input:focus {
-            border-color: #667eea;
-        }
-        
-        .search-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .search-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        /* Main Content Area */
-        .main-content {
-            background: white;
-            margin-top: 2rem;
-            border-radius: 20px 20px 0 0;
-            min-height: calc(100vh - 400px);
-        }
-        
-        /* Tab Navigation */
-        .tab-nav {
-            display: flex;
-            background: #f8f9fa;
-            border-radius: 20px 20px 0 0;
-            overflow-x: auto;
-        }
-        
-        .tab-btn {
-            flex: 1;
-            padding: 1.5rem;
-            background: transparent;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            min-width: 150px;
-        }
-        
-        .tab-btn.active {
-            background: white;
-            color: #667eea;
-            border-radius: 20px 20px 0 0;
-        }
-        
-        .tab-content {
-            display: none;
-            padding: 2rem;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border: 1px solid #f0f0f0;
-            cursor: pointer;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            margin-bottom: 1rem;
-            color: #333;
-        }
-        
-        /* Masters Grid */
-        .masters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .master-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-        
-        .master-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border-color: #667eea;
-        }
-        
-        .master-avatar {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-        
-        .master-info {
-            padding: 1.5rem;
-        }
-        
-        .master-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.5rem;
-        }
-        
-        .master-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-            margin: 0;
-        }
-        
-        .verified-badge {
-            background: #28a745;
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .master-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .rating-stars {
-            color: #ffc107;
-        }
-        
-        .rating-text {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .master-specializations {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .specialization-tag {
-            background: #e8f4fd;
-            color: #0c5460;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .master-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-        
-        .master-price {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-        
-        .master-location {
-            color: #999;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        
-        .master-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .btn-small {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-        }
-        
-        /* Registration Form */
-        .registration-form {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .form-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            border: 2px solid #f0f0f0;
-            border-radius: 15px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-section:hover {
-            border-color: #667eea;
-        }
-        
-        .section-title {
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            align-items: flex-end;
         }
         
         .form-group {
-            margin-bottom: 1rem;
+            flex: 1;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #333;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+        
+        .search-button {
+            background: #1a73e8;
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .search-button:hover {
+            background: #1557b0;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #5f6c7b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            border-color: #1a73e8;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .service-card p {
+            color: #5f6c7b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a73e8;
+        }
+        
+        /* How it Works */
+        .how-it-works {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #1a73e8;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .step p {
+            color: #5f6c7b;
+            line-height: 1.6;
+        }
+        
+        /* Guarantee Section */
+        .guarantee-section {
+            background: #1a73e8;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .guarantee-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .guarantee-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .guarantee-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .guarantee-item p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Registration Section */
+        .registration-section {
+            background: #ffffff;
+            padding: 4rem 0;
+        }
+        
+        .registration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .registration-text h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .registration-text p {
+            font-size: 1.1rem;
+            color: #5f6c7b;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .benefits-list li::before {
+            content: "✓";
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .registration-form {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
         }
         
         .form-control {
             width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
+            padding: 0.9rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
         }
         
         .form-control:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #1a73e8;
         }
         
-        textarea.form-control {
-            resize: vertical;
-            min-height: 100px;
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .specialty-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .specialty-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1a73e8;
+        }
+        
+        .submit-button {
+            background: #1a73e8;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            background: #1557b0;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
         }
         
         /* Modal */
@@ -451,13 +528,11 @@
         
         .modal-content {
             background-color: white;
-            margin: 2% auto;
+            margin: 5% auto;
             padding: 2rem;
-            border-radius: 20px;
+            border-radius: 12px;
             width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
+            max-width: 500px;
             position: relative;
         }
         
@@ -466,176 +541,13 @@
             right: 1rem;
             top: 1rem;
             color: #aaa;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
-            z-index: 1;
         }
         
         .close:hover {
-            color: black;
-        }
-        
-        /* Profile Section */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: #f8f9ff;
-            border-radius: 15px;
-        }
-        
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .profile-info h2 {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        
-        .profile-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Safety Features */
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .safety-card {
-            background: #f8f9ff;
-            border: 2px solid #e8eaff;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .safety-card:hover {
-            border-color: #667eea;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
-        }
-        
-        .safety-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .safety-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-        
-        .safety-text {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        /* Filters */
-        .filters {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .filter-input {
-            padding: 0.5rem;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .filter-input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            opacity: 0.9;
-        }
-        
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-section ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-section ul li a:hover {
-            color: #667eea;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #555;
-            color: #999;
+            color: #2c3e50;
         }
         
         /* Mobile Responsive */
@@ -652,31 +564,35 @@
                 flex-direction: column;
             }
             
-            .auth-buttons {
-                flex-direction: column;
+            .registration-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .tab-nav {
-                flex-wrap: wrap;
-            }
-            
-            .tab-btn {
-                min-width: 120px;
-                font-size: 0.9rem;
-            }
-            
-            .masters-grid {
+            .form-row {
                 grid-template-columns: 1fr;
             }
             
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .form-grid {
+            .specialties-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Tab functionality */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
         }
         
         /* Animations */
@@ -691,7 +607,7 @@
             }
         }
         
-        .service-card, .master-card, .safety-card {
+        .service-card {
             animation: fadeInUp 0.6s ease forwards;
         }
         
@@ -701,578 +617,408 @@
         .service-card:nth-child(4) { animation-delay: 0.4s; }
         .service-card:nth-child(5) { animation-delay: 0.5s; }
         .service-card:nth-child(6) { animation-delay: 0.6s; }
-        
-        /* Loading Animation */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-            font-size: 1.1rem;
-            color: #666;
-        }
-        
-        .spinner {
-            width: 30px;
-            height: 30px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-right: 1rem;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo" onclick="showTab('home')">TopMaster</div>
+            <a href="#" class="logo" onclick="showSection('home')">TopMaster</a>
             <ul class="nav-links">
-                <li><a onclick="showTab('home')">Главная</a></li>
-                <li><a onclick="showTab('services')">Услуги</a></li>
-                <li><a onclick="showTab('masters')">Мастера</a></li>
-                <li><a onclick="showTab('safety')">Безопасность</a></li>
-                <li><a onclick="showTab('about')">О нас</a></li>
+                <li><a onclick="showSection('home')">Главная</a></li>
+                <li><a onclick="showSection('services')">Услуги</a></li>
+                <li><a onclick="showSection('about')">О нас</a></li>
+                <li><a onclick="showSection('contact')">Контакты</a></li>
             </ul>
-            <div class="auth-buttons">
-                <a onclick="showModal('loginModal')" class="btn btn-secondary">Войти</a>
-                <a onclick="showTab('register')" class="btn btn-primary">Стать мастером</a>
-            </div>
+            <a onclick="showSection('register')" class="cta-button">Стать исполнителем</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Найди лучшего мастера</h1>
-            <p>Более 10,000 проверенных специалистов по всей России</p>
-            
-            <div class="search-box">
-                <form class="search-form" onsubmit="searchMasters(event)">
-                    <input type="text" class="search-input" placeholder="Какая услуга нужна?" id="serviceInput">
-                    <input type="text" class="search-input" placeholder="Ваш город" id="cityInput">
-                    <button type="submit" class="search-btn">🔍 Найти мастера</button>
-                </form>
+    <!-- Home Section -->
+    <section id="home" class="tab-content active">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="container">
+                <h1>Профессиональные услуги для дома и бизнеса</h1>
+                <p>Найдите проверенных специалистов для любых задач. Быстро, надежно, с гарантией качества.</p>
+                
+                <div class="search-container">
+                    <form class="search-form" onsubmit="handleSearch(event)">
+                        <div class="form-group">
+                            <label for="service">Какая услуга нужна?</label>
+                            <select id="service" class="form-input" required>
+                                <option value="">Выберите услугу</option>
+                                <option value="plumbing">Сантехнические работы</option>
+                                <option value="electrical">Электромонтажные работы</option>
+                                <option value="repair">Ремонт и отделка</option>
+                                <option value="cleaning">Клининговые услуги</option>
+                                <option value="furniture">Сборка мебели</option>
+                                <option value="appliance">Ремонт техники</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Ваш город</label>
+                            <input type="text" id="location" class="form-input" placeholder="Москва" required>
+                        </div>
+                        <button type="submit" class="search-button">Найти специалиста</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Популярные услуги</h2>
+                    <p class="section-subtitle">Широкий спектр профессиональных услуг для решения любых задач</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card" onclick="selectService('plumbing')">
+                        <span class="service-icon">🔧</span>
+                        <h3>Сантехнические работы</h3>
+                        <p>Установка и ремонт сантехники, замена труб, устранение протечек</p>
+                        <div class="service-price">от 800 ₽</div>
+                    </div>
+                    
+                    <div class="service-card" onclick="selectService('electrical')">
+                        <span class="service-icon">⚡</span>
+                        <h3>Электромонтажные работы</h3>
+                        <p>Монтаж проводки, установка розеток, подключение техники</p>
+                        <div class="service-price">от 1200 ₽</div>
+                    </div>
+                    
+                    <div class="service-card" onclick="selectService('repair')">
+                        <span class="service-icon">🏠</span>
+                        <h3>Ремонт и отделка</h3>
+                        <p>Косметический и капитальный ремонт, покраска, поклейка обоев</p>
+                        <div class="service-price">от 500 ₽/м²</div>
+                    </div>
+                    
+                    <div class="service-card" onclick="selectService('cleaning')">
+                        <span class="service-icon">🧹</span>
+                        <h3>Клининговые услуги</h3>
+                        <p>Генеральная уборка, мытье окон, химчистка мебели</p>
+                        <div class="service-price">от 1500 ₽</div>
+                    </div>
+                    
+                    <div class="service-card" onclick="selectService('furniture')">
+                        <span class="service-icon">🪑</span>
+                        <h3>Сборка мебели</h3>
+                        <p>Сборка и установка мебели любой сложности</p>
+                        <div class="service-price">от 2000 ₽</div>
+                    </div>
+                    
+                    <div class="service-card" onclick="selectService('appliance')">
+                        <span class="service-icon">🔨</span>
+                        <h3>Ремонт техники</h3>
+                        <p>Ремонт бытовой техники, диагностика, запчасти</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🚗</span>
+                        <h3>Автомобильные услуги</h3>
+                        <p>• Диагностика автомобиля<br>• Замена масла и фильтров<br>• Ремонт двигателя<br>• Кузовные работы</p>
+                        <div class="service-price">от 2500 ₽</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🌿</span>
+                        <h3>Садовые работы</h3>
+                        <p>• Уход за газоном<br>• Обрезка деревьев<br>• Ландшафтный дизайн<br>• Система полива</p>
+                        <div class="service-price">от 1800 ₽</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">📦</span>
+                        <h3>Грузоперевозки</h3>
+                        <p>• Квартирные переезды<br>• Доставка мебели<br>• Грузчики<br>• Утилизация</p>
+                        <div class="service-price">от 3000 ₽</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Tab Navigation -->
-        <div class="tab-nav">
-            <button class="tab-btn active" onclick="showTab('home')">🏠 Главная</button>
-            <button class="tab-btn" onclick="showTab('services')">🔧 Услуги</button>
-            <button class="tab-btn" onclick="showTab('masters')">👥 Мастера</button>
-            <button class="tab-btn" onclick="showTab('register')">📝 Регистрация</button>
-            <button class="tab-btn" onclick="showTab('profile')">👤 Профиль</button>
-            <button class="tab-btn" onclick="showTab('safety')">🛡️ Безопасность</button>
-        </div>
-
-        <!-- Home Tab -->
-        <div class="tab-content active" id="home">
+    <!-- Register Section -->
+    <section id="register" class="tab-content">
+        <div class="registration-section">
             <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Популярные услуги</h2>
-                <div class="services-grid">
-                    <div class="service-card" onclick="filterByService('plumbing')">
-                        <div class="service-icon">🔧</div>
-                        <h3>Сантехника</h3>
-                        <p>Установка, ремонт, замена сантехники. Быстро и качественно.</p>
-                    </div>
-                    <div class="service-card" onclick="filterByService('electrical')">
-                        <div class="service-icon">⚡</div>
-                        <h3>Электрика</h3>
-                        <p>Электромонтаж, ремонт проводки, установка светильников.</p>
-                    </div>
-                    <div class="service-card" onclick="filterByService('repair')">
-                        <div class="service-icon">🔨</div>
-                        <h3>Ремонт квартир</h3>
-                        <p>Косметический и капитальный ремонт под ключ.</p>
-                    </div>
-                    <div class="service-card" onclick="filterByService('cleaning')">
-                        <div class="service-icon">🏠</div>
-                        <h3>Уборка</h3>
-                        <p>Генеральная уборка, поддерживающая уборка домов и офисов.</p>
-                    </div>
-                    <div class="service-card" onclick="filterByService('auto')">
-                        <div class="service-icon">🚗</div>
-                        <h3>Автосервис</h3>
-                        <p>Ремонт и обслуживание автомобилей всех марок.</p>
-                    </div>
-                    <div class="service-card" onclick="filterByService('it')">
-                        <div class="service-icon">💻</div>
-                        <h3>IT-услуги</h3>
-                        <p>Ремонт компьютеров, настройка техники, программирование.</p>
-                    </div>
-                </div>
-
-                <div style="margin-top: 3rem;">
-                    <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Как это работает</h2>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-number">1</div>
-                            <div class="stat-label">Опишите задачу</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">2</div>
-                            <div class="stat-label">Получите предложения</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">3</div>
-                            <div class="stat-label">Выберите мастера</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label">Наслаждайтесь результатом</div>
+                <div class="registration-content">
+                    <div class="registration-text">
+                        <h2>Станьте нашим партнером</h2>
+                        <p>Присоединяйтесь к команде профессионалов TopMaster и получайте стабильный доход, выполняя интересные проекты.</p>
+                        
+                        <ul class="benefits-list">
+                            <li>Стабильный поток заказов</li>
+                            <li>Справедливые цены на услуги</li>
+                            <li>Поддержка и обучение</li>
+                            <li>Гибкий график работы</li>
+                            <li>Быстрые выплаты</li>
+                            <li>Страхование ответственности</li>
+                        </ul>
+                        
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1a73e8;">
+                            <h4 style="margin-bottom: 0.5rem; color: #2c3e50;">💰 Средний доход наших партнеров:</h4>
+                            <p style="margin: 0; color: #1a73e8; font-weight: 600; font-size: 1.1rem;">от 80,000 до 250,000 рублей в месяц</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Services Tab -->
-        <div class="tab-content" id="services">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Все услуги</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🔧</div>
-                        <h3>Сантехника</h3>
-                        <p>• Установка смесителей<br>• Замена труб<br>• Устранение засоров<br>• Ремонт сантехники</p>
-                        <div style="margin-top: 1rem;">
-                            <strong style="color: #667eea;">от 2000 ₽</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Masters Tab -->
-        <div class="tab-content" id="masters">
-            <div class="container">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                    <h2 style="color: #333;">Наши мастера</h2>
-                    <div class="filters">
-                        <input type="text" class="filter-input" placeholder="Город" id="cityFilter">
-                        <select class="filter-input" id="specialtyFilter">
-                            <option value="">Все специальности</option>
-                            <option value="plumbing">Сантехника</option>
-                            <option value="electrical">Электрика</option>
-                            <option value="repair">Ремонт</option>
-                            <option value="cleaning">Уборка</option>
-                            <option value="auto">Автосервис</option>
-                            <option value="it">IT-услуги</option>
-                        </select>
-                        <select class="filter-input" id="ratingFilter">
-                            <option value="">Любой рейтинг</option>
-                            <option value="5">5 звезд</option>
-                            <option value="4">4+ звезд</option>
-                            <option value="3">3+ звезд</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="masters-grid" id="mastersGrid">
-                    <!-- Masters will be loaded here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Register Tab -->
-        <div class="tab-content" id="register">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">🔧 Стать мастером TopMaster</h2>
-                <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
-                    Присоединяйтесь к команде профессионалов и получайте заказы каждый день
-                </p>
-
-                <form class="registration-form" onsubmit="submitRegistration(event)">
-                    <!-- Личная информация -->
-                    <div class="form-section">
-                        <h3 class="section-title">👤 Личная информация</h3>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="firstName">Имя *</label>
-                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                    
+                    <div class="registration-form">
+                        <h3 style="margin-bottom: 1.5rem; color: #2c3e50;">Заявка на сотрудничество</h3>
+                        <form onsubmit="submitApplication(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">Имя *</label>
+                                    <input type="text" id="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Фамилия *</label>
+                                    <input type="text" id="lastName" class="form-control" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="lastName">Фамилия *</label>
-                                <input type="text" id="lastName" name="lastName" class="form-control" required>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Телефон *</label>
+                                    <input type="tel" id="phone" class="form-control" placeholder="+7 (___) ___-__-__" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
                             </div>
+                            
                             <div class="form-group">
-                                <label for="phone">Телефон *</label>
-                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+7 (___) ___-__-__" required>
+                                <label for="city">Город работы *</label>
+                                <input type="text" id="city" class="form-control" placeholder="Москва" required>
                             </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="city">Город *</label>
-                                <input type="text" id="city" name="city" class="form-control" required>
-                            </div>
+                            
                             <div class="form-group">
                                 <label for="experience">Опыт работы</label>
-                                <select id="experience" name="experience" class="form-control">
+                                <select id="experience" class="form-control">
                                     <option value="">Выберите опыт</option>
-                                    <option value="1">Менее года</option>
-                                    <option value="2">1-3 года</option>
-                                    <option value="5">3-5 лет</option>
-                                    <option value="10">5-10 лет</option>
-                                    <option value="15">Более 10 лет</option>
+                                    <option value="0-1">Менее года</option>
+                                    <option value="1-3">1-3 года</option>
+                                    <option value="3-5">3-5 лет</option>
+                                    <option value="5-10">5-10 лет</option>
+                                    <option value="10+">Более 10 лет</option>
                                 </select>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Специализация -->
-                    <div class="form-section">
-                        <h3 class="section-title">🔧 Специализация</h3>
-                        <div class="form-group">
-                            <label>Выберите ваши специализации *</label>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                    <input type="checkbox" name="specializations[]" value="plumbing">
-                                    🔧 Сантехника
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                    <input type="checkbox" name="specializations[]" value="electrical">
-                                    ⚡ Электрика
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                    <input type="checkbox" name="specializations[]" value="repair">
-                                    🔨 Ремонт
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                    <input type="checkbox" name="specializations[]" value="cleaning">
-                                    🧹 Уборка
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                    <input type="checkbox" name="specializations[]" value="auto">
-                                    🚗 Автосервис
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                                    <input type="checkbox" name="specializations[]" value="it">
-                                    💻 IT-услуги
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="priceRange">Ценовой диапазон (руб/час)</label>
-                            <div style="display: flex; gap: 1rem; align-items: center;">
-                                <input type="number" id="priceMin" name="priceMin" class="form-control" placeholder="от 500" style="flex: 1;">
-                                <span>—</span>
-                                <input type="number" id="priceMax" name="priceMax" class="form-control" placeholder="до 3000" style="flex: 1;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center;">
-                        <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">
-                            🚀 Подать заявку
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Profile Tab -->
-        <div class="tab-content" id="profile">
-            <div class="container">
-                <div class="profile-header">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" 
-                         alt="Алексей Петров" class="profile-avatar">
-                    <div class="profile-info">
-                        <h2>Алексей Петров</h2>
-                        <div class="profile-rating">
-                            <span class="rating-stars">★★★★★</span>
-                            <span>4.9 (127 отзывов)</span>
-                            <span class="verified-badge">✓ Проверен</span>
-                        </div>
-                        <p style="color: #666; margin-bottom: 1rem;">
-                            📍 Москва, СЗАО • 🔧 Сантехника, Ремонт • 💰 от 1200 ₽/час
-                        </p>
-                        <div style="display: flex; gap: 1rem;">
-                            <button class="btn btn-primary" onclick="showModal('contactModal')">
-                                💬 Написать сообщение
-                            </button>
-                            <button class="btn btn-secondary" onclick="showModal('reviewModal')">
-                                ⭐ Оставить отзыв
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
-                    <!-- Основная информация -->
-                    <div>
-                        <div style="background: #f8f9ff; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
-                            <h3 style="margin-bottom: 1rem; color: #333;">👤 О мастере</h3>
-                            <p style="color: #555; line-height: 1.6;">
-                                Профессиональный сантехник с 8-летним опытом работы. Специализируюсь на установке и ремонте 
-                                сантехнического оборудования, прокладке водопроводных и канализационных сетей. Работаю быстро, 
-                                качественно и с гарантией.
-                            </p>
-                        </div>
-
-                        <div style="background: #f8f9ff; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
-                            <h3 style="margin-bottom: 1rem; color: #333;">📸 Портфолио работ</h3>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-                                <div style="position: relative; border-radius: 10px; overflow: hidden; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=200&h=150&fit=crop" 
-                                         style="width: 100%; height: 150px; object-fit: cover;">
-                                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: white; padding: 0.5rem; font-size: 0.8rem;">
-                                        Установка ванны
-                                    </div>
-                                </div>
-                                <div style="position: relative; border-radius: 10px; overflow: hidden; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=200&h=150&fit=crop" 
-                                         style="width: 100%; height: 150px; object-fit: cover;">
-                                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: white; padding: 0.5rem; font-size: 0.8rem;">
-                                        Замена смесителя
-                                    </div>
-                                </div>
-                                <div style="position: relative; border-radius: 10px; overflow: hidden; cursor: pointer;">
-                                    <img src="https://images.unsplash.com/photo-1584622781867-4238fcdc60ac?w=200&h=150&fit=crop" 
-                                         style="width: 100%; height: 150px; object-fit: cover;">
-                                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); color: white; padding: 0.5rem; font-size: 0.8rem;">
-                                        Прокладка труб
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Отзывы -->
-                        <div style="background: #f8f9ff; padding: 2rem; border-radius: 15px;">
-                            <h3 style="margin-bottom: 1.5rem; color: #333;">⭐ Отзывы (127)</h3>
                             
-                            <div style="border-bottom: 1px solid #e9ecef; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                                    <div style="display: flex; align-items: center; gap: 1rem;">
-                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=50&h=50&fit=crop&crop=face" 
-                                             style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-                                        <div>
-                                            <h4 style="margin-bottom: 0.2rem;">Анна С.</h4>
-                                            <div style="color: #666; font-size: 0.9rem;">15 февраля 2024</div>
-                                        </div>
+                            <div class="form-group">
+                                <label>Специализации *</label>
+                                <div class="specialties-grid">
+                                    <div class="specialty-item">
+                                        <input type="checkbox" id="spec-plumbing" name="specialties[]" value="plumbing">
+                                        <label for="spec-plumbing">Сантехника</label>
                                     </div>
-                                    <div style="color: #ffc107;">★★★★★</div>
-                                </div>
-                                <p style="color: #555; line-height: 1.6;">
-                                    Отличный мастер! Быстро приехал, оперативно установил новый смеситель в ванной. 
-                                    Работает аккуратно, убрал за собой. Цена справедливая. Обязательно обращусь еще!
-                                </p>
-                            </div>
-
-                            <div style="border-bottom: 1px solid #e9ecef; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                                    <div style="display: flex; align-items: center; gap: 1rem;">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" 
-                                             style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-                                        <div>
-                                            <h4 style="margin-bottom: 0.2rem;">Михаил К.</h4>
-                                            <div style="color: #666; font-size: 0.9rem;">8 февраля 2024</div>
-                                        </div>
+                                    <div class="specialty-item">
+                                        <input type="checkbox" id="spec-electrical" name="specialties[]" value="electrical">
+                                        <label for="spec-electrical">Электрика</label>
                                     </div>
-                                    <div style="color: #ffc107;">★★★★★</div>
-                                </div>
-                                <p style="color: #555; line-height: 1.6;">
-                                    Алексей помог решить проблему с засором в трубах. Приехал в тот же день, быстро 
-                                    диагностировал проблему и устранил. Профессионал своего дела!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Боковая панель -->
-                    <div>
-                        <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
-                            <h3 style="margin-bottom: 1rem; color: #333;">💰 Услуги и цены</h3>
-                            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div>
-                                        <div style="font-weight: 600;">Установка смесителя</div>
-                                        <div style="font-size: 0.9rem; color: #666;">Любые типы смесителей</div>
+                                    <div class="specialty-item">
+                                        <input type="checkbox" id="spec-repair" name="specialties[]" value="repair">
+                                        <label for="spec-repair">Ремонт</label>
                                     </div>
-                                    <div style="font-weight: 600; color: #667eea;">от 800 ₽</div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div>
-                                        <div style="font-weight: 600;">Замена труб</div>
-                                        <div style="font-size: 0.9rem; color: #666;">Металлопластик, полипропилен</div>
+                                    <div class="specialty-item">
+                                        <input type="checkbox" id="spec-cleaning" name="specialties[]" value="cleaning">
+                                        <label for="spec-cleaning">Уборка</label>
                                     </div>
-                                    <div style="font-weight: 600; color: #667eea;">от 300 ₽/м</div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div>
-                                        <div style="font-weight: 600;">Устранение засоров</div>
-                                        <div style="font-size: 0.9rem; color: #666;">Механическая прочистка</div>
+                                    <div class="specialty-item">
+                                        <input type="checkbox" id="spec-furniture" name="specialties[]" value="furniture">
+                                        <label for="spec-furniture">Мебель</label>
                                     </div>
-                                    <div style="font-weight: 600; color: #667eea;">от 1500 ₽</div>
+                                    <div class="specialty-item">
+                                        <input type="checkbox" id="spec-appliance" name="specialties[]" value="appliance">
+                                        <label for="spec-appliance">Техника</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px;">
-                            <h3 style="margin-bottom: 1rem; color: #333;">📞 Контакты</h3>
-                            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                                <div style="display: flex; align-items: center; gap: 0.8rem;">
-                                    <span>📱</span>
-                                    <span>+7 (925) 123-45-67</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.8rem;">
-                                    <span>💬</span>
-                                    <span>Telegram: @master_alex</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.8rem;">
-                                    <span>🕒</span>
-                                    <span>Ежедневно с 8:00 до 22:00</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.8rem;">
-                                    <span>🚗</span>
-                                    <span>Выезд в течение 1 часа</span>
-                                </div>
+                            
+                            <div class="form-group">
+                                <label for="about">О себе</label>
+                                <textarea id="about" class="form-control" rows="3" placeholder="Расскажите о своем опыте и навыках..."></textarea>
                             </div>
-                        </div>
+                            
+                            <button type="submit" class="submit-button">Отправить заявку</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Safety Tab -->
-        <div class="tab-content" id="safety">
+    <!-- About Section -->
+    <section id="about" class="tab-content">
+        <div class="main-content">
             <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">🛡️ Безопасность и гарантии</h2>
-                <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
-                    Мы гарантируем безопасность каждой сделки и качество выполненных работ
-                </p>
-
-                <div class="safety-grid">
-                    <div class="safety-card">
-                        <div class="safety-icon">✅</div>
-                        <h3 class="safety-title">Проверка мастеров</h3>
-                        <p class="safety-text">
-                            Каждый мастер проходит многоэтапную проверку: документы, собеседование, 
-                            тестовое задание и проверка отзывов.
-                        </p>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-icon">🔒</div>
-                        <h3 class="safety-title">Безопасные платежи</h3>
-                        <p class="safety-text">
-                            Система эскроу-счетов: деньги переводятся мастеру только после 
-                            подтверждения выполнения работ.
-                        </p>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-icon">🛡️</div>
-                        <h3 class="safety-title">Страхование</h3>
-                        <p class="safety-text">
-                            Все мастера застрахованы от возможных повреждений вашего имущества 
-                            на сумму до 500,000 рублей.
-                        </p>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-icon">📋</div>
-                        <h3 class="safety-title">Договор на работы</h3>
-                        <p class="safety-text">
-                            Все работы выполняются по договору с четким описанием объема работ, 
-                            сроков и стоимости.
-                        </p>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-icon">⏰</div>
-                        <h3 class="safety-title">Гарантия сроков</h3>
-                        <p class="safety-text">
-                            Если мастер опоздает более чем на 30 минут без уважительной причины, 
-                            мы компенсируем 500 рублей.
-                        </p>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-icon">🔧</div>
-                        <h3 class="safety-title">Гарантия качества</h3>
-                        <p class="safety-text">
-                            На все работы предоставляется гарантия от 6 месяцев до 2 лет 
-                            в зависимости от типа услуги.
-                        </p>
-                    </div>
+                <div class="section-header">
+                    <h2 class="section-title">О компании TopMaster</h2>
+                    <p class="section-subtitle">Надежный партнер в сфере профессиональных услуг с 2020 года</p>
                 </div>
-
-                <div style="margin-top: 3rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem; border-radius: 20px; text-align: center;">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.8rem;">Остались вопросы?</h3>
-                    <p style="margin-bottom: 2rem; opacity: 0.9;">
-                        Наша команда поддержки готова помочь вам 24/7
-                    </p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px;">
-                            <div style="font-size: 2rem; margin-bottom: 1rem;">📞</div>
-                            <div style="font-weight: 600; margin-bottom: 0.5rem;">Горячая линия</div>
-                            <div>8 (800) 123-45-67</div>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px;">
-                            <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
-                            <div style="font-weight: 600; margin-bottom: 0.5rem;">Email</div>
-                            <div>support@topmaster.ru</div>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px;">
-                            <div style="font-size: 2rem; margin-bottom: 1rem;">💬</div>
-                            <div style="font-weight: 600; margin-bottom: 0.5rem;">Онлайн-чат</div>
-                            <div>Круглосуточно</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- About Tab -->
-        <div class="tab-content" id="about">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">О компании TopMaster</h2>
                 
-                <div class="stats-grid" style="margin-bottom: 3rem;">
-                    <div class="stat-card">
-                        <div class="stat-number">10,000+</div>
-                        <div class="stat-label">Проверенных мастеров</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin: 3rem 0;">
+                    <div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2c3e50;">Наша миссия</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: #5f6c7b; margin-bottom: 2rem;">
+                            TopMaster — это современная платформа, которая объединяет профессиональных исполнителей 
+                            и людей, нуждающихся в качественных услугах. Мы делаем процесс поиска и заказа услуг 
+                            простым, безопасным и эффективным.
+                        </p>
+                        
+                        <h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #2c3e50;">Наши преимущества:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                                <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                Тщательная проверка всех исполнителей
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                                <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                Прозрачная система ценообразования
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                                <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                Гарантия качества выполненных работ
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                                <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                Безопасная система платежей
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                                <span style="background: #1a73e8; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">✓</span>
+                                Поддержка клиентов 24/7
+                            </li>
+                        </ul>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">50,000+</div>
-                        <div class="stat-label">Выполненных заказов</div>
+                    
+                    <div style="background: #f8f9fa; padding: 2.5rem; border-radius: 12px; text-align: center;">
+                        <h3 style="margin-bottom: 2rem; color: #2c3e50;">Наши достижения</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: 700; color: #1a73e8; margin-bottom: 0.5rem;">15,000+</div>
+                                <div style="color: #5f6c7b;">Проверенных исполнителей</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: 700; color: #1a73e8; margin-bottom: 0.5rem;">100,000+</div>
+                                <div style="color: #5f6c7b;">Выполненных заказов</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: 700; color: #1a73e8; margin-bottom: 0.5rem;">4.9</div>
+                                <div style="color: #5f6c7b;">Средняя оценка</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: 700; color: #1a73e8; margin-bottom: 0.5rem;">98%</div>
+                                <div style="color: #5f6c7b;">Довольных клиентов</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">4.8</div>
-                        <div class="stat-label">Средний рейтинг</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">99.2%</div>
-                        <div class="stat-label">Довольных клиентов</div>
-                    </div>
-                </div>
-
-                <div style="background: #f8f9ff; padding: 3rem; border-radius: 20px; text-align: center;">
-                    <h3 style="margin-bottom: 2rem; color: #333;">Наша миссия</h3>
-                    <p style="color: #555; font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                        TopMaster — это надежная платформа для поиска квалифицированных мастеров по всей России. 
-                        Мы работаем с 2020 года и за это время помогли тысячам клиентов найти профессиональных 
-                        исполнителей для решения бытовых задач. Наша цель — сделать поиск мастеров простым, 
-                        безопасным и эффективным.
-                    </p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="tab-content">
+        <div class="main-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Связаться с нами</h2>
+                    <p class="section-subtitle">Мы всегда готовы помочь и ответить на ваши вопросы</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
+                    <div>
+                        <h3 style="margin-bottom: 2rem; color: #2c3e50;">Контактная информация</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                                <span style="font-size: 1.5rem;">📞</span>
+                                <div>
+                                    <div style="font-weight: 600; color: #2c3e50;">Горячая линия</div>
+                                    <div style="color: #1a73e8; font-size: 1.1rem;">8 (800) 123-45-67</div>
+                                    <div style="font-size: 0.9rem; color: #5f6c7b;">Бесплатно по всей России</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                                <span style="font-size: 1.5rem;">📧</span>
+                                <div>
+                                    <div style="font-weight: 600; color: #2c3e50;">Email</div>
+                                    <div style="color: #1a73e8; font-size: 1.1rem;">info@topmaster.ru</div>
+                                    <div style="font-size: 0.9rem; color: #5f6c7b;">Ответим в течение часа</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                                <span style="font-size: 1.5rem;">💬</span>
+                                <div>
+                                    <div style="font-weight: 600; color: #2c3e50;">Онлайн-чат</div>
+                                    <div style="color: #1a73e8; font-size: 1.1rem;">Круглосуточно на сайте</div>
+                                    <div style="font-size: 0.9rem; color: #5f6c7b;">Мгновенные ответы</div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                                <span style="font-size: 1.5rem;">📍</span>
+                                <div>
+                                    <div style="font-weight: 600; color: #2c3e50;">Офис</div>
+                                    <div style="color: #2c3e50; font-size: 1.1rem;">Москва, ул. Тверская, 15</div>
+                                    <div style="font-size: 0.9rem; color: #5f6c7b;">Пн-Пт 9:00-18:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 style="margin-bottom: 2rem; color: #2c3e50;">Написать нам</h3>
+                        <form style="background: #f8f9fa; padding: 2rem; border-radius: 12px;" onsubmit="sendContactForm(event)">
+                            <div class="form-group">
+                                <label for="contactName">Ваше имя *</label>
+                                <input type="text" id="contactName" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactEmail">Email *</label>
+                                <input type="email" id="contactEmail" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactPhone">Телефон</label>
+                                <input type="tel" id="contactPhone" class="form-control" placeholder="+7 (___) ___-__-__">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactSubject">Тема обращения</label>
+                                <select id="contactSubject" class="form-control">
+                                    <option value="">Выберите тему</option>
+                                    <option value="general">Общие вопросы</option>
+                                    <option value="service">Вопросы по услугам</option>
+                                    <option value="partnership">Сотрудничество</option>
+                                    <option value="complaint">Жалоба</option>
+                                    <option value="suggestion">Предложение</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Сообщение *</label>
+                                <textarea id="contactMessage" class="form-control" rows="4" placeholder="Опишите ваш вопрос или предложение..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">Отправить сообщение</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Login Modal -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="hideModal('loginModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; text-align: center;">Вход в аккаунт</h2>
+            <h2 style="margin-bottom: 2rem; text-align: center; color: #2c3e50;">Вход в личный кабинет</h2>
             <form onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label for="loginEmail">Email</label>
@@ -1282,82 +1028,10 @@
                     <label for="loginPassword">Пароль</label>
                     <input type="password" id="loginPassword" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
-                    Войти
-                </button>
+                <button type="submit" class="submit-button">Войти</button>
                 <div style="text-align: center; margin-top: 1rem;">
-                    <a href="#" style="color: #667eea;">Забыли пароль?</a>
+                    <a href="#" style="color: #1a73e8; text-decoration: none;">Забыли пароль?</a>
                 </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Contact Modal -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="hideModal('contactModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem;">💬 Написать мастеру</h2>
-            <form onsubmit="sendMessage(event)">
-                <div class="form-group">
-                    <label for="clientName">Ваше имя *</label>
-                    <input type="text" id="clientName" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="clientPhone">Телефон *</label>
-                    <input type="tel" id="clientPhone" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="serviceType">Тип услуги</label>
-                    <select id="serviceType" class="form-control">
-                        <option value="">Выберите услугу</option>
-                        <option value="plumbing">Сантехника</option>
-                        <option value="electrical">Электрика</option>
-                        <option value="repair">Ремонт</option>
-                        <option value="cleaning">Уборка</option>
-                        <option value="auto">Автосервис</option>
-                        <option value="it">IT-услуги</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Описание работ *</label>
-                    <textarea id="message" class="form-control" rows="4" 
-                              placeholder="Опишите подробно, что нужно сделать..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    Отправить сообщение
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Review Modal -->
-    <div id="reviewModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="hideModal('reviewModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem;">⭐ Оставить отзыв</h2>
-            <form onsubmit="submitReview(event)">
-                <div class="form-group">
-                    <label>Оценка *</label>
-                    <div style="display: flex; gap: 0.2rem; margin: 0.5rem 0;" id="starRating">
-                        <span class="star" data-rating="1" style="font-size: 2rem; color: #ddd; cursor: pointer;">★</span>
-                        <span class="star" data-rating="2" style="font-size: 2rem; color: #ddd; cursor: pointer;">★</span>
-                        <span class="star" data-rating="3" style="font-size: 2rem; color: #ddd; cursor: pointer;">★</span>
-                        <span class="star" data-rating="4" style="font-size: 2rem; color: #ddd; cursor: pointer;">★</span>
-                        <span class="star" data-rating="5" style="font-size: 2rem; color: #ddd; cursor: pointer;">★</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="reviewerName">Ваше имя *</label>
-                    <input type="text" id="reviewerName" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="reviewText">Отзыв *</label>
-                    <textarea id="reviewText" class="form-control" rows="4" 
-                              placeholder="Расскажите о качестве работы мастера..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    Опубликовать отзыв
-                </button>
             </form>
         </div>
     </div>
@@ -1368,33 +1042,40 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>TopMaster</h3>
-                    <p>Надежная платформа для поиска качественных мастеров по всей России.</p>
+                    <p style="color: #bdc3c7; line-height: 1.6;">Профессиональные услуги для дома и бизнеса. Найдите проверенных специалистов для любых задач.</p>
+                    <div style="margin-top: 1rem;">
+                        <span style="color: #1a73e8; font-weight: 600;">4.9 ★★★★★</span> на основе 50,000+ отзывов
+                    </div>
                 </div>
                 <div class="footer-section">
-                    <h3>Для клиентов</h3>
+                    <h3>Услуги</h3>
                     <ul>
-                        <li><a href="#" onclick="showTab('masters')">Найти мастера</a></li>
-                        <li><a href="#" onclick="showTab('services')">Услуги</a></li>
-                        <li><a href="#" onclick="showTab('safety')">Безопасность</a></li>
-                        <li><a href="#" onclick="showTab('about')">О нас</a></li>
+                        <li><a href="#" onclick="selectService('plumbing')">Сантехнические работы</a></li>
+                        <li><a href="#" onclick="selectService('electrical')">Электромонтажные работы</a></li>
+                        <li><a href="#" onclick="selectService('repair')">Ремонт и отделка</a></li>
+                        <li><a href="#" onclick="selectService('cleaning')">Клининговые услуги</a></li>
+                        <li><a href="#" onclick="selectService('furniture')">Сборка мебели</a></li>
+                        <li><a href="#" onclick="selectService('appliance')">Ремонт техники</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Для мастеров</h3>
+                    <h3>Для исполнителей</h3>
                     <ul>
-                        <li><a href="#" onclick="showTab('register')">Стать мастером</a></li>
-                        <li><a href="#" onclick="showTab('safety')">Верификация</a></li>
-                        <li><a href="#" onclick="showTab('safety')">Гарантии</a></li>
-                        <li><a href="#" onclick="showTab('about')">Помощь</a></li>
+                        <li><a href="#" onclick="showSection('register')">Стать исполнителем</a></li>
+                        <li><a href="#">Условия сотрудничества</a></li>
+                        <li><a href="#">Обучение и поддержка</a></li>
+                        <li><a href="#">Мобильное приложение</a></li>
+                        <li><a href="#">Помощь исполнителям</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Контакты</h3>
+                    <h3>Поддержка</h3>
                     <ul>
-                        <li>📞 8 (800) 123-45-67</li>
-                        <li>📧 info@topmaster.ru</li>
-                        <li>📍 Москва, Россия</li>
-                        <li>🕒 Круглосуточно</li>
+                        <li><a href="#" onclick="showSection('contact')">Связаться с нами</a></li>
+                        <li><a href="#">Часто задаваемые вопросы</a></li>
+                        <li><a href="#">Правила и условия</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Безопасность</a></li>
                     </ul>
                 </div>
             </div>
@@ -1405,130 +1086,18 @@
     </footer>
 
     <script>
-        // Sample data for masters
-        const mastersData = [
-            {
-                id: 1,
-                name: "Алексей Петров",
-                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-                rating: 4.9,
-                reviews: 127,
-                specializations: ["plumbing", "repair"],
-                description: "Профессиональный сантехник с 8-летним опытом. Быстро и качественно решаю любые проблемы с водопроводом.",
-                price: 1200,
-                location: "Москва, СЗАО",
-                verified: true,
-                experience: 8
-            },
-            {
-                id: 2,
-                name: "Мария Сидорова",
-                avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=300&h=300&fit=crop&crop=face",
-                rating: 4.8,
-                reviews: 89,
-                specializations: ["cleaning"],
-                description: "Профессиональная уборка квартир и офисов. Использую только экологичные средства.",
-                price: 800,
-                location: "Москва, ЦАО",
-                verified: true,
-                experience: 5
-            },
-            {
-                id: 3,
-                name: "Дмитрий Иванов",
-                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-                rating: 4.7,
-                reviews: 156,
-                specializations: ["electrical", "repair"],
-                description: "Электрик-универсал. Монтаж, ремонт, диагностика. Работаю с умным домом.",
-                price: 1500,
-                location: "Москва, ЮВАО",
-                verified: true,
-                experience: 12
-            },
-            {
-                id: 4,
-                name: "Анна Козлова",
-                avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
-                rating: 4.9,
-                reviews: 203,
-                specializations: ["cleaning", "repair"],
-                description: "Генеральная уборка после ремонта, регулярная уборка домов и квартир.",
-                price: 900,
-                location: "Москва, САО",
-                verified: true,
-                experience: 6
-            },
-            {
-                id: 5,
-                name: "Сергей Волков",
-                avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
-                rating: 4.6,
-                reviews: 78,
-                specializations: ["auto"],
-                description: "Ремонт и обслуживание автомобилей всех марок. Выезд на место.",
-                price: 2000,
-                location: "Москва, ЗАО",
-                verified: false,
-                experience: 15
-            },
-            {
-                id: 6,
-                name: "Елена Морозова",
-                avatar: "https://images.unsplash.com/photo-1464863979621-258859e62245?w=300&h=300&fit=crop&crop=face",
-                rating: 4.8,
-                reviews: 134,
-                specializations: ["it"],
-                description: "Настройка компьютеров, установка ПО, ремонт техники. Консультации по IT.",
-                price: 1800,
-                location: "Москва, СВАО",
-                verified: true,
-                experience: 7
-            }
-        ];
-
-        // Specialization mappings
-        const specializationNames = {
-            plumbing: "Сантехника",
-            electrical: "Электрика", 
-            repair: "Ремонт",
-            cleaning: "Уборка",
-            auto: "Автосервис",
-            it: "IT-услуги"
-        };
-
-        let currentTab = 'home';
-        let selectedRating = 0;
-        let filteredMasters = [...mastersData];
-
-        // Tab functionality
-        function showTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
+        // Navigation functionality
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.tab-content').forEach(section => {
+                section.classList.remove('active');
             });
             
-            // Remove active class from all tab buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
             
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to corresponding tab button
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            const tabIndex = ['home', 'services', 'masters', 'register', 'profile', 'safety'].indexOf(tabName);
-            if (tabIndex !== -1 && tabButtons[tabIndex]) {
-                tabButtons[tabIndex].classList.add('active');
-            }
-            
-            currentTab = tabName;
-            
-            // Load masters if masters tab is selected
-            if (tabName === 'masters') {
-                renderMasters();
-            }
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Modal functionality
@@ -1538,234 +1107,84 @@
 
         function hideModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
-            if (modalId === 'reviewModal') {
-                selectedRating = 0;
-                updateStarRating(0);
-            }
         }
 
-        // Close modals when clicking outside
+        // Close modal when clicking outside
         window.addEventListener('click', function(event) {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
         });
 
         // Search functionality
-        function searchMasters(event) {
+        function handleSearch(event) {
             event.preventDefault();
-            const service = document.getElementById('serviceInput').value;
-            const city = document.getElementById('cityInput').value;
+            const service = document.getElementById('service').value;
+            const location = document.getElementById('location').value;
             
-            if (service || city) {
-                showTab('masters');
-                // Apply filters based on search
-                if (service) {
-                    document.getElementById('specialtyFilter').value = getServiceKey(service);
-                }
-                if (city) {
-                    document.getElementById('cityFilter').value = city;
-                }
-                applyFilters();
+            if (service && location) {
+                alert(`Поиск ${getServiceName(service)} в городе ${location}.\n\nВ реальном приложении здесь откроется страница с результатами поиска.`);
             } else {
-                alert('Пожалуйста, заполните хотя бы одно поле поиска');
+                alert('Пожалуйста, заполните все поля поиска');
             }
         }
 
-        function getServiceKey(serviceName) {
-            const serviceMap = {
-                'сантехника': 'plumbing',
-                'электрика': 'electrical',
-                'ремонт': 'repair',
-                'уборка': 'cleaning',
-                'автосервис': 'auto',
-                'компьютер': 'it',
-                'it': 'it'
+        function selectService(serviceType) {
+            document.getElementById('service').value = serviceType;
+            showSection('home');
+            
+            // Scroll to search form
+            setTimeout(() => {
+                document.querySelector('.search-container').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 100);
+        }
+
+        function getServiceName(serviceKey) {
+            const serviceNames = {
+                'plumbing': 'Сантехнические работы',
+                'electrical': 'Электромонтажные работы',
+                'repair': 'Ремонт и отделка',
+                'cleaning': 'Клининговые услуги',
+                'furniture': 'Сборка мебели',
+                'appliance': 'Ремонт техники'
             };
-            
-            for (const [key, value] of Object.entries(serviceMap)) {
-                if (serviceName.toLowerCase().includes(key)) {
-                    return value;
-                }
-            }
-            return '';
-        }
-
-        // Filter by service from home page
-        function filterByService(service) {
-            showTab('masters');
-            document.getElementById('specialtyFilter').value = service;
-            applyFilters();
-        }
-
-        // Render masters
-        function renderMasters() {
-            const container = document.getElementById('mastersGrid');
-            container.innerHTML = '';
-
-            if (filteredMasters.length === 0) {
-                container.innerHTML = '<div class="loading">Мастера не найдены. Попробуйте изменить фильтры.</div>';
-                return;
-            }
-
-            filteredMasters.forEach(master => {
-                const specialTags = master.specializations.map(spec => 
-                    `<span class="specialization-tag">${specializationNames[spec]}</span>`
-                ).join('');
-
-                const stars = '★'.repeat(Math.floor(master.rating)) + (master.rating % 1 ? '☆' : '');
-                
-                const cardHTML = `
-                    <div class="master-card" onclick="viewMasterProfile(${master.id})">
-                        <img src="${master.avatar}" alt="${master.name}" class="master-avatar">
-                        <div class="master-info">
-                            <div class="master-header">
-                                <h3 class="master-name">${master.name}</h3>
-                                ${master.verified ? '<span class="verified-badge">✓ Проверен</span>' : ''}
-                            </div>
-                            <div class="master-rating">
-                                <span class="rating-stars">${stars}</span>
-                                <span class="rating-text">${master.rating} (${master.reviews} отзывов)</span>
-                            </div>
-                            <div class="master-specializations">
-                                ${specialTags}
-                            </div>
-                            <p class="master-description">${master.description}</p>
-                            <div class="master-price">от ${master.price} ₽/час</div>
-                            <div class="master-location">📍 ${master.location}</div>
-                            <div class="master-actions">
-                                <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); contactMaster(${master.id})">
-                                    Связаться
-                                </button>
-                                <button class="btn btn-secondary btn-small" onclick="event.stopPropagation(); viewMasterProfile(${master.id})">
-                                    Профиль
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += cardHTML;
-            });
-        }
-
-        // Filter functionality
-        function applyFilters() {
-            const cityFilter = document.getElementById('cityFilter')?.value.toLowerCase() || '';
-            const specialtyFilter = document.getElementById('specialtyFilter')?.value || '';
-            const ratingFilter = parseFloat(document.getElementById('ratingFilter')?.value) || 0;
-
-            filteredMasters = mastersData.filter(master => {
-                const cityMatch = !cityFilter || master.location.toLowerCase().includes(cityFilter);
-                const specialtyMatch = !specialtyFilter || master.specializations.includes(specialtyFilter);
-                const ratingMatch = master.rating >= ratingFilter;
-
-                return cityMatch && specialtyMatch && ratingMatch;
-            });
-
-            renderMasters();
-        }
-
-        // Event listeners for filters
-        document.addEventListener('DOMContentLoaded', function() {
-            const cityFilter = document.getElementById('cityFilter');
-            const specialtyFilter = document.getElementById('specialtyFilter');
-            const ratingFilter = document.getElementById('ratingFilter');
-
-            if (cityFilter) cityFilter.addEventListener('input', applyFilters);
-            if (specialtyFilter) specialtyFilter.addEventListener('change', applyFilters);
-            if (ratingFilter) ratingFilter.addEventListener('change', applyFilters);
-        });
-
-        // Master profile
-        function viewMasterProfile(masterId) {
-            showTab('profile');
-        }
-
-        function contactMaster(masterId) {
-            showModal('contactModal');
-        }
-
-        // Star rating functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const stars = document.querySelectorAll('.star');
-            stars.forEach(star => {
-                star.addEventListener('click', function() {
-                    selectedRating = parseInt(this.getAttribute('data-rating'));
-                    updateStarRating(selectedRating);
-                });
-                
-                star.addEventListener('mouseover', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    updateStarRating(rating);
-                });
-            });
-            
-            const starRating = document.getElementById('starRating');
-            if (starRating) {
-                starRating.addEventListener('mouseleave', function() {
-                    updateStarRating(selectedRating);
-                });
-            }
-        });
-
-        function updateStarRating(rating) {
-            const stars = document.querySelectorAll('.star');
-            stars.forEach((star, index) => {
-                if (index < rating) {
-                    star.style.color = '#ffc107';
-                } else {
-                    star.style.color = '#ddd';
-                }
-            });
+            return serviceNames[serviceKey] || serviceKey;
         }
 
         // Form submissions
-        function handleLogin(event) {
-            event.preventDefault();
-            alert('Вход выполнен успешно!');
-            hideModal('loginModal');
-        }
-
-        function sendMessage(event) {
-            event.preventDefault();
-            alert('Сообщение отправлено! Мастер свяжется с вами в ближайшее время.');
-            hideModal('contactModal');
-            event.target.reset();
-        }
-
-        function submitReview(event) {
+        function submitApplication(event) {
             event.preventDefault();
             
-            if (selectedRating === 0) {
-                alert('Пожалуйста, поставьте оценку');
-                return;
-            }
-            
-            alert('Спасибо за отзыв! После модерации он будет опубликован.');
-            hideModal('reviewModal');
-            event.target.reset();
-            selectedRating = 0;
-            updateStarRating(0);
-        }
-
-        function submitRegistration(event) {
-            event.preventDefault();
-            
-            // Check if at least one specialization is selected
-            const specializations = document.querySelectorAll('input[name="specializations[]"]:checked');
-            if (specializations.length === 0) {
+            // Check if at least one specialty is selected
+            const specialties = document.querySelectorAll('input[name="specialties[]"]:checked');
+            if (specialties.length === 0) {
                 alert('Пожалуйста, выберите хотя бы одну специализацию');
                 return;
             }
             
-            alert('🎉 Заявка успешно отправлена! Мы свяжемся с вами в течение 24 часов для завершения процесса верификации.');
+            // Show success message
+            alert('🎉 Спасибо за заявку!\n\nМы рассмотрим ваше заявление в течение 24 часов и свяжемся с вами для дальнейшего сотрудничества.');
+            
+            // Reset form
             event.target.reset();
         }
 
-        // Phone formatting
+        function handleLogin(event) {
+            event.preventDefault();
+            alert('Вход в систему выполнен успешно!');
+            hideModal('loginModal');
+        }
+
+        function sendContactForm(event) {
+            event.preventDefault();
+            alert('Спасибо за обращение!\n\nМы получили ваше сообщение и ответим в ближайшее время.');
+            event.target.reset();
+        }
+
+        // Phone number formatting
         document.addEventListener('input', function(e) {
             if (e.target.type === 'tel') {
                 let value = e.target.value.replace(/\D/g, '');
@@ -1784,74 +1203,142 @@
             }
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header background change on scroll
+        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             }
         });
 
-        // Initialize the page
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            renderMasters();
+            // Show home section by default
+            showSection('home');
         });
     </script>
 </body>
-</html>color: #667eea;">от 500 ₽</strong>
-                        </div>
+</html>    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How it Works -->
+        <div class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Как это работает</h2>
+                    <p class="section-subtitle">Простой процесс получения качественных услуг</p>
+                </div>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Опишите задачу</h3>
+                        <p>Расскажите, что нужно сделать, укажите удобное время и место</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>Электрика</h3>
-                        <p>• Замена проводки<br>• Установка розеток<br>• Монтаж освещения<br>• Подключение бытовой техники</p>
-                        <div style="margin-top: 1rem;">
-                            <strong style="color: #667eea;">от 800 ₽</strong>
-                        </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Получите предложения</h3>
+                        <p>Проверенные специалисты свяжутся с вами и предложат свои услуги</p>
                     </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Выберите исполнителя</h3>
+                        <p>Сравните предложения, изучите отзывы и выберите подходящего специалиста</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Получите результат</h3>
+                        <p>Работы выполняются качественно и в срок с гарантией</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guarantee Section -->
+        <div class="guarantee-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" style="color: white;">Наши гарантии</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Мы обеспечиваем безопасность и качество каждой сделки</p>
+                </div>
+                
+                <div class="guarantee-grid">
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">🛡️</span>
+                        <h3>Проверенные специалисты</h3>
+                        <p>Все исполнители проходят тщательную проверку документов и квалификации</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">💰</span>
+                        <h3>Безопасные платежи</h3>
+                        <p>Оплата через безопасную систему, деньги передаются после выполнения работ</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">📋</span>
+                        <h3>Гарантия качества</h3>
+                        <p>На все работы предоставляется гарантия, страхование ответственности</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <span class="guarantee-icon">⏰</span>
+                        <h3>Соблюдение сроков</h3>
+                        <p>Работы выполняются в оговоренные сроки или мы компенсируем задержку</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="tab-content">
+        <div class="main-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Все услуги</h2>
+                    <p class="section-subtitle">Полный каталог профессиональных услуг с фиксированными ценами</p>
+                </div>
+                
+                <div class="services-grid">
                     <div class="service-card">
-                        <div class="service-icon">🔨</div>
+                        <span class="service-icon">🔧</span>
+                        <h3>Сантехнические работы</h3>
+                        <p>• Установка смесителей и раковин<br>• Замена труб и фитингов<br>• Устранение засоров<br>• Ремонт унитазов и ванн</p>
+                        <div class="service-price">от 800 ₽</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">⚡</span>
+                        <h3>Электромонтажные работы</h3>
+                        <p>• Замена проводки<br>• Установка розеток и выключателей<br>• Монтаж освещения<br>• Подключение бытовой техники</p>
+                        <div class="service-price">от 1200 ₽</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <span class="service-icon">🏠</span>
                         <h3>Ремонт и отделка</h3>
-                        <p>• Косметический ремонт<br>• Поклейка обоев<br>• Укладка плитки<br>• Покраска стен</p>
-                        <div style="margin-top: 1rem;">
-                            <strong style="color: #667eea;">от 300 ₽/м²</strong>
-                        </div>
+                        <p>• Покраска стен и потолков<br>• Поклейка обоев<br>• Укладка плитки<br>• Установка напольных покрытий</p>
+                        <div class="service-price">от 500 ₽/м²</div>
                     </div>
+                    
                     <div class="service-card">
-                        <div class="service-icon">🏠</div>
-                        <h3>Клининг</h3>
-                        <p>• Генеральная уборка<br>• Мытье окон<br>• Химчистка мебели<br>• Уборка после ремонта</p>
-                        <div style="margin-top: 1rem;">
-                            <strong style="color: #667eea;">от 1000 ₽</strong>
-                        </div>
+                        <span class="service-icon">🧹</span>
+                        <h3>Клининговые услуги</h3>
+                        <p>• Генеральная уборка<br>• Мытье окон<br>• Химчистка мебели и ковров<br>• Уборка после ремонта</p>
+                        <div class="service-price">от 1500 ₽</div>
                     </div>
+                    
                     <div class="service-card">
-                        <div class="service-icon">🪑</div>
+                        <span class="service-icon">🪑</span>
                         <h3>Сборка мебели</h3>
-                        <p>• Кухонные гарнитуры<br>• Шкафы-купе<br>• Офисная мебель<br>• Детская мебель</p>
-                        <div style="margin-top: 1rem;">
-                            <strong style="color: #667eea;">от 1500 ₽</strong>
-                        </div>
+                        <p>• Кухонные гарнитуры<br>• Шкафы и комоды<br>• Офисная мебель<br>• Встроенные конструкции</p>
+                        <div class="service-price">от 2000 ₽</div>
                     </div>
+                    
                     <div class="service-card">
-                        <div class="service-icon">🚗</div>
-                        <h3>Автосервис</h3>
-                        <p>• Диагностика автомобиля<br>• Замена масла<br>• Ремонт двигателя<br>• Кузовные работы</p>
-                        <div style="margin-top: 1rem;">
-                            <strong style="
+                        <span class="service-icon">🔨</span>
+                        <h3>Ремонт техники</h3>
+                        <p>• Стиральные машины<br>• Холодильники<br>• Компьютеры и ноутбуки<br>• Мелкая бытовая техника</p>
+                        <div class="service-price">от 1000 ₽</div>
